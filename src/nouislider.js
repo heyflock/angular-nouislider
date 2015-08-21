@@ -9,6 +9,7 @@ angular.module('nouislider', []).directive('slider', function () {
       pips: '&',
       callback: '@',
       margin: '@',
+      connect: '@',
       ngModel: '=',
       ngFrom: '=',
       ngTo: '='
@@ -26,7 +27,7 @@ angular.module('nouislider', []).directive('slider', function () {
             scope.ngTo || scope.end
           ],
           step: parseFloat(scope.step || 1),
-          connect: true,
+          connect: scope.connect,
           margin: parseFloat(scope.margin || 0),
           range: {
             min: [parseFloat(scope.start)],
@@ -69,6 +70,7 @@ angular.module('nouislider', []).directive('slider', function () {
             min: [parseFloat(scope.start)],
             max: [parseFloat(scope.end)]
           },
+          connect: scope.connect,
           pips: scope.pips()
         });
         slider.noUiSlider.on(callback, function () {
